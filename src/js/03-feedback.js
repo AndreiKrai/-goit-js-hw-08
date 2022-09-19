@@ -10,15 +10,15 @@ function onFormInput(event) {
   formData[event.target.name] = event.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
-
+console.log('123');
 function onPageLoad(event) {
   const storageData = localStorage.getItem('feedback-form-state');
   if (!storageData) return;
-  const storageDataObj = JSON.parse(storageData);
-  console.log(storageDataObj);
+  formData = JSON.parse(storageData);
+  console.log(formData);
   // використовуємо функцію для переборупо ключам та постановки значення. Використовуємо цикл, бо полів інпуту може бути і 100шт.
-  for (const key in storageDataObj) {
-    inputEl.elements[key].value = storageDataObj[key];
+  for (const key in formData) {
+    inputEl.elements[key].value = formData[key];
     //   console.log(storageDataObj[key]);
   }
 }
